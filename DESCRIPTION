@@ -1,0 +1,23 @@
+Package: RMODPATH
+Type: Package
+Title: Pre- and post-processing of MODPATH files
+Version: 0.1.0
+Authors@R: person("Cas", "Neyens", role = c("aut", "cre"), email = "cas.neyens@vub.be")
+Author: Cas Neyens <cas.neyens@vub.be>
+Maintainer: Cas Neyens <cas.neyens@vub.be>
+Description: The RMODPATH package provides a set of tools for particle tracking
+    with MODPATH.
+License: GPL (>= 2)
+Imports:
+    magrittr,
+    readr (>= 2.0.0),
+    RMODFLOW
+Remotes:
+    rogiersbart/RMODFLOW@develop
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/cneyens/RMODPATH
+BugReports: https://github.com/cneyens/RMODPATH/issues
+RoxygenNote: 7.1.1
+Depends: 
+    R (>= 3.1.0)
