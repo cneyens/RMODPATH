@@ -170,6 +170,7 @@ rmp_read_sim <- function(file, dis) {
     sim_lines <- data_set_21$remaining_lines
     rm(data_set_21)
 
+    if(missing(dis)) stop('Please supply dis object when reading zone arrays', call. = FALSE)
     data_set_22 <- rmpi_parse_array(sim_lines, nrow = dis$nrow, ncol = dis$ncol, nlay = dis$nlay, ndim = 3, file = file, integer = TRUE)
     sim$zones <- apply(data_set_22$array, MARGIN = 1:length(dim(data_set_22$array)), function(x) as.integer(x))
     attributes(sim$zones) <- attributes(data_set_22$array)
@@ -185,6 +186,7 @@ rmp_read_sim <- function(file, dis) {
 
   # data set 24
   if(sim$retardationfactoroption == 2) {
+    if(missing(dis)) stop('Please supply dis object when reading retardation arrays', call. = FALSE)
     data_set_24 <- rmpi_parse_array(sim_lines, nrow = dis$nrow, ncol = dis$ncol, nlay = dis$nlay, ndim = 3, file = file)
     sim$retardation <- data_set_24$array
     sim_lines <- data_set_24$remaining_lines
@@ -274,6 +276,6 @@ rmp_read_sim <- function(file, dis) {
     }
   }
 
-  class(sim) <- c('sim', 'modpath_object')
+  class(sim) <- c('sim', 'rmp_package')
   return(sim)
 }
