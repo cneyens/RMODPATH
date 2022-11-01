@@ -16,7 +16,7 @@ rmp_read_starting_locations <- function(file = NULL, remaining_lines = NULL) {
   rtn_lines <- FALSE
 
   if(!is.null(file)) {
-    sloc_lines <- readr::read_lines(file)
+    sloc_lines <- readr::read_lines(file, lazy = FALSE)
 
   } else if(!is.null(remaining_lines)) {
     sloc_lines <- remaining_lines
@@ -74,7 +74,7 @@ rmp_read_starting_locations <- function(file = NULL, remaining_lines = NULL) {
       }
     }
 
-    df <- readr::read_table(sloc_lines, col_names = FALSE, col_types = readr::cols(.default = 'd'), n_max = sloc$particlecount)
+    df <- readr::read_table(I(sloc_lines), col_names = FALSE, col_types = readr::cols(.default = 'd'), n_max = sloc$particlecount)
     df <- df[,1:nvar]
     names(df) <- df_names
     sloc_lines <- sloc_lines[-c(1:sloc$particlecount)]

@@ -12,7 +12,7 @@
 #' @examples
 rmp_read_sim <- function(file, dis) {
 
-  sim_lines <- readr::read_lines(file)
+  sim_lines <- readr::read_lines(file, lazy = FALSE)
   sim <- list()
 
   # data set 0

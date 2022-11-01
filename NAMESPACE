@@ -2,6 +2,8 @@
 
 export("%>%")
 export(rmp_read_endpoint)
+export(rmp_read_pathline)
 export(rmp_read_sim)
 export(rmp_read_starting_locations)
+export(rmp_read_timeseries)
 importFrom(magrittr,"%>%")
