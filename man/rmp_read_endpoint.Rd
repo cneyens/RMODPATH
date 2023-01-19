@@ -4,10 +4,12 @@
 \alias{rmp_read_endpoint}
 \title{Reads an endpoint output file}
 \usage{
-rmp_read_endpoint(file)
+rmp_read_endpoint(file, ...)
 }
 \arguments{
 \item{file}{path tot the endpoint output file}
+
+\item{...}{ignored}
 }
 \value{
 object of class endpoint

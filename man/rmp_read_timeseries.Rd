@@ -4,10 +4,12 @@
 \alias{rmp_read_timeseries}
 \title{Reads a timeseries output file}
 \usage{
-rmp_read_timeseries(file)
+rmp_read_timeseries(file, ...)
 }
 \arguments{
 \item{file}{path tot the timeseries output file}
+
+\item{...}{ignored}
 }
 \value{
 object of class timeseries

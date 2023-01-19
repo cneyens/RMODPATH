@@ -23,6 +23,6 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/cneyens/RMODPATH
 BugReports: https://github.com/cneyens/RMODPATH/issues
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Depends: 
     R (>= 3.1.0)

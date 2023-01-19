@@ -20,7 +20,7 @@ rmpi_parse_array(remaining_lines, nrow, ncol, nlay, ndim, ...)
 \item{...}{additional arguments passed to \link[RMODFLOW]{rmfi_parse_array}}
 }
 \value{
-A list containing the array and the remaining text of the MODFLOW input file
+A list containing the array and the remaining text of the MODPATH input file
 }
 \description{
 Get an array specified by a control record from the text lines analyzed in an \code{RMODPATH} \code{rmp_read.*} function

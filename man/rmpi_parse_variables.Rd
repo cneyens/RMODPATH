@@ -2,7 +2,7 @@
 % Please edit documentation in R/internals.R
 \name{rmpi_parse_variables}
 \alias{rmpi_parse_variables}
-\title{Read modpath variables
+\title{Read MODPATH variables
 If all are numbers, returns numeric, otherwise returns character vector}
 \usage{
 rmpi_parse_variables(remaining_lines, format = "free", ...)
@@ -13,7 +13,7 @@ rmpi_parse_variables(remaining_lines, format = "free", ...)
 \item{...}{additional arguments passed to \link[RMODFLOW]{rmfi_parse_variables}}
 }
 \description{
-Read modpath variables
+Read MODPATH variables
 If all are numbers, returns numeric, otherwise returns character vector
 }
 \keyword{internal}

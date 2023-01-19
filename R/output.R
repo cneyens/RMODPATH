@@ -4,12 +4,13 @@
 #' \code{rmp_read_endpoint} reads an endpoint output file and returns it as a \code{\link{RMODPATH}} endpoint object
 #'
 #' @param file path tot the endpoint output file
+#' @param ... ignored
 #'
 #' @return object of class endpoint
 #' @export
 #' @seealso \code{\link{rmp_read_pathline}}, \code{\link{rmp_read_timeseries}}
 #' @examples
-rmp_read_endpoint <- function(file) {
+rmp_read_endpoint <- function(file, ...) {
 
   endp_lines <- readr::read_lines(file, lazy = FALSE)
   endp <- list()
@@ -89,12 +90,13 @@ rmp_read_endpoint <- function(file) {
 #' \code{rmp_read_pathline} reads a pathline output file and returns it as a \code{\link{RMODPATH}} pathline object
 #'
 #' @param file path tot the pathline output file
+#' @param ... ignored
 #'
 #' @return object of class pathline
 #' @export
 #' @seealso \code{\link{rmp_read_timeseries}}, \code{\link{rmp_read_endpoint}}
 #' @examples
-rmp_read_pathline <- function(file) {
+rmp_read_pathline <- function(file, ...) {
 
   pth_lines <- readr::read_lines(file, lazy = FALSE)
   pth <- list()
@@ -163,12 +165,13 @@ rmp_read_pathline <- function(file) {
 #' \code{rmp_read_timeseries} reads a timeseries output file and returns it as a \code{\link{RMODPATH}} timeseries object
 #'
 #' @param file path tot the timeseries output file
+#' @param ... ignored
 #'
 #' @return object of class timeseries
 #' @export
 #' @seealso \code{\link{rmp_read_pathline}}, \code{\link{rmp_read_endpoint}}
 #' @examples
-rmp_read_timeseries <- function(file) {
+rmp_read_timeseries <- function(file, ...) {
 
   ts_lines <- readr::read_lines(file, lazy = FALSE)
   ts <- list()

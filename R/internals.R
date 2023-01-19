@@ -25,7 +25,7 @@ rmpi_parse_comments <- function(remaining_lines) {
   return(list(comments = comments, remaining_lines = remaining_lines))
 }
 
-#' Read modpath variables
+#' Read MODPATH variables
 #' If all are numbers, returns numeric, otherwise returns character vector
 #' @param format character, either \code{'free'} (default) or \code{'fixed'}. When 'fixed', reads 10-character fields and converts to numeric. Empty fields are set to zero.
 #' @param ... additional arguments passed to \link[RMODFLOW]{rmfi_parse_variables}
@@ -41,8 +41,24 @@ rmpi_parse_variables <- function(remaining_lines, format = 'free', ...) {
 #' @param nlay number of layers in the array that should be read
 #' @param ndim dimensions of the array to read; either 1, 2 or 3. Denotes the if the returned array should be 1D, 2D or 3D.
 #' @param ... additional arguments passed to \link[RMODFLOW]{rmfi_parse_array}
-#' @return A list containing the array and the remaining text of the MODFLOW input file
+#' @return A list containing the array and the remaining text of the MODPATH input file
 #' @keywords internal
 rmpi_parse_array <- function(remaining_lines,nrow,ncol,nlay, ndim, ...) {
   RMODFLOW:::rmfi_parse_array(remaining_lines, nrow = nrow, ncol = ncol, nlay = nlay, ndim = ndim, ...)
+}
+
+#' Write MODPATH variables
+#' Internal function used in the rmp_write_* functions for writing variables
+#' @keywords internal
+rmpi_write_variables <- function(..., file, append=TRUE, width = 10, format = 'free', integer = FALSE, iprn = -1) {
+  RMODFLOW:::rmfi_write_variables(..., file = file, append = append, width = width, format = format, integer = integer, iprn = iprn)
+}
+
+#' Write MODPATH array
+#' Internal function used in the rmp_write_* functions for writing array datasets
+#' @param ... additional arguments passed to \link[RMODFLOW]{rmfi_write_array}
+#' @details if the array should be written as integers, an integer array should be provided
+#' @keywords internal
+rmpi_write_array <- function(array, file, ...) {
+  RMODFLOW:::rmfi_write_array(array = array, file = file, ...)
 }

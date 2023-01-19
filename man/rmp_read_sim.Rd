@@ -4,16 +4,21 @@
 \alias{rmp_read_sim}
 \title{Read a MODPATH Simulation File}
 \usage{
-rmp_read_sim(file, dis)
+rmp_read_sim(file, dis, ...)
 }
 \arguments{
-\item{file}{path to the simulation file}
+\item{file}{path to the Simulation File}
 
 \item{dis}{\code{RMODFLOW} dis object; only needed when reading zone arrays and/or retardation arrays}
+
+\item{...}{ignored}
 }
 \value{
 a \code{RMODPATH} sim object
 }
 \description{
-\code{rmp_read_sim} reads a MODPATH simulation file and returns at as a \code{sim} object
+\code{rmp_read_sim} reads a MODPATH Simulation File and returns at as a \code{sim} object
+}
+\seealso{
+\code{\link{rmp_write_sim}}, \code{\link{rmp_create_sim}}
 }

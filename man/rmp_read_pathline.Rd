@@ -4,10 +4,12 @@
 \alias{rmp_read_pathline}
 \title{Reads a pathline output file}
 \usage{
-rmp_read_pathline(file)
+rmp_read_pathline(file, ...)
 }
 \arguments{
 \item{file}{path tot the pathline output file}
+
+\item{...}{ignored}
 }
 \value{
 object of class pathline
