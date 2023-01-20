@@ -86,11 +86,11 @@ rmp_read_bas <- function(file, dis, style = '2005', ...) {
 
 #' Write a MODPATH Basic Data File
 #'
-#' \code{rmp_write_bas} writes a MODPATH Basic Data File based on an \code{\link{RMODPATH}} mpbas object.
+#' \code{rmp_write_bas} writes a MODPATH Basic Data File based on an \code{RMODPATH} mpbas object.
 #'
-#' @param bas a \code{\link{RMODPATH}} mpbas object
+#' @param bas a \code{RMODPATH} mpbas object
 #' @param file filename to write to; typically '*.mpbas'
-#' @param ... additional arguments passed to \link{\code{RMODPATH}}{rmpi_write_array}. Can be ignored when arrays are INTERNAL or CONSTANT.
+#' @param ... additional arguments passed to \code{rmpi_write_array}. Can be ignored when arrays are INTERNAL or CONSTANT.
 #'
 #' @return \code{NULL}
 #' @export

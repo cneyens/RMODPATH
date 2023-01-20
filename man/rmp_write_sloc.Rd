@@ -12,7 +12,7 @@ rmp_write_sloc(
 )
 }
 \arguments{
-\item{sloc}{a \code{\link{RMODPATH}} sloc object}
+\item{sloc}{a \code{RMODPATH} sloc object}
 
 \item{file}{path to write to}
 
@@ -24,7 +24,7 @@ rmp_write_sloc(
 \code{NULL}
 }
 \description{
-\code{rmp_write_starting_locations} writes the starting locations of a particle group based on an \code{\link{RMODPATH}} sloc object to either a Simulation File or an external ASCII file.
+\code{rmp_write_starting_locations} writes the starting locations of a particle group based on an \code{RMODPATH} sloc object to either a Simulation File or an external ASCII file.
 }
 \seealso{
 \code{\link{rmp_create_sloc}}, \code{\link{rmp_read_sloc}}

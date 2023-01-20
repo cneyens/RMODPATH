@@ -7,17 +7,17 @@
 rmp_write_sim(sim, file, ...)
 }
 \arguments{
-\item{sim}{a \code{\link{RMODPATH}} sim object}
+\item{sim}{a \code{RMODPATH} sim object}
 
 \item{file}{filename to write to; typically '*.mpsim'}
 
-\item{...}{additional arguments passed to \link{\code{RMODPATH}}{rmpi_write_array}. Can be ignored when arrays are INTERNAL or CONSTANT.}
+\item{...}{additional arguments passed to \code{rmpi_write_array}. Can be ignored when arrays are INTERNAL or CONSTANT.}
 }
 \value{
 \code{NULL}
 }
 \description{
-\code{rmp_write_sim} writes a MODPATH Simulation File based on an \code{\link{RMODPATH}} sim object.
+\code{rmp_write_sim} writes a MODPATH Simulation File based on an \code{RMODPATH} sim object.
 }
 \seealso{
 \code{\link{rmp_read_sim}}, \code{\link{rmp_create_sim}}

@@ -15,7 +15,7 @@ rmp_read_endpoint(file, ...)
 object of class endpoint
 }
 \description{
-\code{rmp_read_endpoint} reads an endpoint output file and returns it as a \code{\link{RMODPATH}} endpoint object
+\code{rmp_read_endpoint} reads an endpoint output file and returns it as a \code{RMODPATH} endpoint object
 }
 \seealso{
 \code{\link{rmp_read_pathline}}, \code{\link{rmp_read_timeseries}}

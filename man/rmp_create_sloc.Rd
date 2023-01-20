@@ -23,7 +23,8 @@ Object of class sloc
 }
 \details{
 For inputstyle = 1, \code{df} should have following columns: (layer, row, column) OR (cellnumber), localx, localy, localz, timeoffset, drape. An optional id column may also be specified.
+         \code{\link{rmp_get_locations}} may be used to obtain this data from given x, y and z coordinates.
 }
 \seealso{
-\code{\link{rmp_write_sloc}}, \code{\link{rmp_read_sloc}}
+\code{\link{rmp_write_sloc}}, \code{\link{rmp_read_sloc}} and \code{\link{rmp_get_locations}}
 }

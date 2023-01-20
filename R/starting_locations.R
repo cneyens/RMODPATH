@@ -110,9 +110,9 @@ rmp_read_sloc <- function(file = NULL, remaining_lines = NULL, pathname = file, 
 
 #' Write starting locations of a particle group
 #'
-#' \code{rmp_write_starting_locations} writes the starting locations of a particle group based on an \code{\link{RMODPATH}} sloc object to either a Simulation File or an external ASCII file.
+#' \code{rmp_write_starting_locations} writes the starting locations of a particle group based on an \code{RMODPATH} sloc object to either a Simulation File or an external ASCII file.
 #'
-#' @param sloc a \code{\link{RMODPATH}} sloc object
+#' @param sloc a \code{RMODPATH} sloc object
 #' @param file path to write to
 #' @param append logical, should the file be appended? Defaults to TRUE
 #' @param ... ignored
@@ -185,10 +185,11 @@ rmp_write_sloc <- function(sloc, file, append = sloc$startinglocationsfileoption
 #' @param ... ignored
 #'
 #' @details For inputstyle = 1, \code{df} should have following columns: (layer, row, column) OR (cellnumber), localx, localy, localz, timeoffset, drape. An optional id column may also be specified.
+#'          \code{\link{rmp_get_locations}} may be used to obtain this data from given x, y and z coordinates.
 #'
 #' @return Object of class sloc
 #' @export
-#' @seealso \code{\link{rmp_write_sloc}}, \code{\link{rmp_read_sloc}}
+#' @seealso \code{\link{rmp_write_sloc}}, \code{\link{rmp_read_sloc}} and \code{\link{rmp_get_locations}}
 #'
 #' @examples
 rmp_create_sloc <- function(df,
@@ -268,3 +269,85 @@ rmp_create_particlegroup <- function(sloc,
   class(grp) <- c('particle_group', 'rmp_object')
   return(grp)
 }
+
+#' Obtain particle starting locations from x, y and z coordinates
+#'
+#' \code{rmp_get_locations} obtains the starting locations of particles from an object with x, y and z coordinates
+#'
+#' @param obj data.frame with x, y and z columns or an {sf}, {sfc} or {sfg} XY or XYZ POINT or MULTIPOINT object. See details.
+#' @param dis \code{RMODFLOW} dis object
+#' @param prj optional \code{RMODFLOW} prj object; required when obj contains real-world coordinates instead of MODFLOW grid coordinates
+#' @param locationstyle integer specifying the locationstyle to be used. The default (1) uses layer, row and column indices; the other (2) a cellnumber index.
+#' @param timeoffset optional numeric column specifying the timeoffset. This is required by \code{\link{rmp_create_sloc}} when using the outputted tibble as the \code{sloc} argument.
+#' @param drape optional integer column specifying the drape option. This is required by \code{\link{rmp_create_sloc}} when using the outputted tibble as the \code{sloc} argument.
+#' @param id optional integer column specifying the particle id. This is an optional argument by \code{\link{rmp_create_sloc}} when using the outputted tibble as the \code{sloc} argument
+#' @param ... ignored
+#'
+#' @details When obj is an \code{sf}, \code{sfc} or \code{sfg} object with dimensions XY, an additional z column should be specified. The \code{sf} package should be installed when obj is of class \code{sf}, \code{sfc} or \code{sfg}.
+#'
+#' @return a tibble with layer, row, column, localx, localy and localz columns when inputstyle = 1 or cellnumber, localx, localy and localz columns when inputstyle = 2,
+#'         corresponding to the given coordinates in obj. When timeoffset and drape (and optionally, id) columns are added, this can be used as the \code{sloc} argument in \code{\link{rmp_create_sloc}} to create a starting locations object.
+#' @export
+#' @seealso \code{\link{rmp_create_sloc}}
+#'
+#' @examples
+rmp_get_locations <- function(obj,
+                              dis,
+                              prj = RMODFLOW::rmf_get_prj(dis),
+                              locationstyle = 1,
+                              timeoffset = NULL,
+                              drape = NULL,
+                              id = NULL,
+                              ...) {
+
+  if(inherits(obj, 'sf') | inherits(obj, 'sfc') | inherits(obj, 'sfc')) {
+    if(!requireNamespace('sf', quietly = TRUE)) stop('Please install the {sf} package when obj is an sf or sfc object', call. = FALSE)
+    if(class(sf::st_geometry(obj)[[1]])[1] == "XYZ") {
+      coords <- sf::st_coordinates(obj)
+      x <- coords[,1]
+      y <- coords[,2]
+      z <- coords[,3]
+    } else if(class(sf::st_geometry(obj)[[1]])[1] == "XY") {
+      if(is.null(obj$z)) stop('If POINT geometries do not have dimension XYZ, a z column should be specified', call. = FALSE)
+      coords <- sf::st_coordinates(obj)
+      x <- coords[,1]
+      y <- coords[,2]
+      z <- obj$z
+    } else {
+      stop('Only sf POINT and MULTIPOINT geometries of dimensions XY or XYZ are supported.', call. = FALSE)
+    }
+  } else {
+    if(is.null(obj$x) | is.null(obj$y) | is.null(obj$z)) stop('x, y, and z columns should be specified in obj', call. = FALSE)
+    x <- obj$x
+    y <- obj$y
+    z <- obj$z
+  }
+
+  lcs <- RMODFLOW::rmf_convert_xyz_to_grid(dis = dis, prj = prj, x = x, y = y, z = z, output = c('ijk', 'off'))
+  # off is between -0.5 & 0.5 but localx, y & z should be between 0 and 1
+  lcs$roff <- -lcs$roff + 0.5 # = localy, in positive y direction
+  lcs$coff <- lcs$coff + 0.5 # = localx, in positive x direction
+  lcs$loff <- -lcs$loff + 0.5 # = localz, in positive z direction
+
+  if(locationstyle == 1) {
+    lcs <- lcs[,c('k', 'i', 'j', 'coff', 'roff', 'loff')]
+    lcs <- setNames(lcs, c('layer', 'row', 'column', 'localx', 'localy', 'localz'))
+  } else if(locationstyle == 2) {
+    lcs$cellnumber <- RMODFLOW::rmf_convert_ijk_to_id(i = lcs$i, j = lcs$j, k = lcs$k, dis = dis, type = 'modflow')
+    lcs <- lcs[,c('cellnumber', 'coff', 'roff', 'loff')]
+    lcs <- setNames(lcs, c('cellnumber', 'localx', 'localy', 'localz'))
+  } else {
+    stop('locationstyle should be 1 or 2', call. = FALSE)
+  }
+
+  if(!is.null(timeoffset)) lcs$timeoffset <- timeoffset
+  if(!is.null(drape)) lcs$drape <- drape
+  if(!is.null(id)) {
+    cls <- colnames(lcs)
+    lcs$id <- id
+    lcs <- lcs[,c('id', cls)]
+  }
+  return(tibble::as_tibble(lcs))
+}
+
+

@@ -290,11 +290,11 @@ rmp_read_sim <- function(file, dis, ...) {
 
 #' Write a MODPATH Simulation File
 #'
-#' \code{rmp_write_sim} writes a MODPATH Simulation File based on an \code{\link{RMODPATH}} sim object.
+#' \code{rmp_write_sim} writes a MODPATH Simulation File based on an \code{RMODPATH} sim object.
 #'
-#' @param sim a \code{\link{RMODPATH}} sim object
+#' @param sim a \code{RMODPATH} sim object
 #' @param file filename to write to; typically '*.mpsim'
-#' @param ... additional arguments passed to \link{\code{RMODPATH}}{rmpi_write_array}. Can be ignored when arrays are INTERNAL or CONSTANT.
+#' @param ... additional arguments passed to \code{rmpi_write_array}. Can be ignored when arrays are INTERNAL or CONSTANT.
 #'
 #' @return \code{NULL}
 #' @export

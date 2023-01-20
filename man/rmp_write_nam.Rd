@@ -7,7 +7,7 @@
 rmp_write_nam(nam, file, ...)
 }
 \arguments{
-\item{nam}{a \code{\link{RMODPATH}} mpnam object}
+\item{nam}{a \code{RMODPATH} mpnam object}
 
 \item{file}{filename to write to; typically '*.mpnam'}
 
@@ -17,7 +17,7 @@ rmp_write_nam(nam, file, ...)
 \code{NULL}
 }
 \description{
-\code{rmp_write_nam} writes a MODPATH Name File based on an \code{\link{RMODPATH}} mpnam object.
+\code{rmp_write_nam} writes a MODPATH Name File based on an \code{RMODPATH} mpnam object.
 }
 \seealso{
 \code{\link{rmp_read_nam}}, \code{\link{rmp_create_nam}}

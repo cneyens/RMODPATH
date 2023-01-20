@@ -15,7 +15,7 @@ rmp_read_pathline(file, ...)
 object of class pathline
 }
 \description{
-\code{rmp_read_pathline} reads a pathline output file and returns it as a \code{\link{RMODPATH}} pathline object
+\code{rmp_read_pathline} reads a pathline output file and returns it as a \code{RMODPATH} pathline object
 }
 \seealso{
 \code{\link{rmp_read_timeseries}}, \code{\link{rmp_read_endpoint}}

@@ -7,17 +7,17 @@
 rmp_write_bas(bas, file, ...)
 }
 \arguments{
-\item{bas}{a \code{\link{RMODPATH}} mpbas object}
+\item{bas}{a \code{RMODPATH} mpbas object}
 
 \item{file}{filename to write to; typically '*.mpbas'}
 
-\item{...}{additional arguments passed to \link{\code{RMODPATH}}{rmpi_write_array}. Can be ignored when arrays are INTERNAL or CONSTANT.}
+\item{...}{additional arguments passed to \code{rmpi_write_array}. Can be ignored when arrays are INTERNAL or CONSTANT.}
 }
 \value{
 \code{NULL}
 }
 \description{
-\code{rmp_write_bas} writes a MODPATH Basic Data File based on an \code{\link{RMODPATH}} mpbas object.
+\code{rmp_write_bas} writes a MODPATH Basic Data File based on an \code{RMODPATH} mpbas object.
 }
 \seealso{
 \code{\link{rmp_read_bas}}, \code{\link{rmp_create_bas}}

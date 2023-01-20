@@ -51,9 +51,9 @@ rmp_read_nam <- function(file, ...) {
 
 #' Write a MODPATH Name File
 #'
-#' \code{rmp_write_nam} writes a MODPATH Name File based on an \code{\link{RMODPATH}} mpnam object.
+#' \code{rmp_write_nam} writes a MODPATH Name File based on an \code{RMODPATH} mpnam object.
 #'
-#' @param nam a \code{\link{RMODPATH}} mpnam object
+#' @param nam a \code{RMODPATH} mpnam object
 #' @param file filename to write to; typically '*.mpnam'
 #' @param ... ignored
 #'

@@ -1,7 +1,7 @@
 
 #' Reads an endpoint output file
 #'
-#' \code{rmp_read_endpoint} reads an endpoint output file and returns it as a \code{\link{RMODPATH}} endpoint object
+#' \code{rmp_read_endpoint} reads an endpoint output file and returns it as a \code{RMODPATH} endpoint object
 #'
 #' @param file path tot the endpoint output file
 #' @param ... ignored
@@ -87,7 +87,7 @@ rmp_read_endpoint <- function(file, ...) {
 
 #' Reads a pathline output file
 #'
-#' \code{rmp_read_pathline} reads a pathline output file and returns it as a \code{\link{RMODPATH}} pathline object
+#' \code{rmp_read_pathline} reads a pathline output file and returns it as a \code{RMODPATH} pathline object
 #'
 #' @param file path tot the pathline output file
 #' @param ... ignored
@@ -162,7 +162,7 @@ rmp_read_pathline <- function(file, ...) {
 
 #' Reads a timeseries output file
 #'
-#' \code{rmp_read_timeseries} reads a timeseries output file and returns it as a \code{\link{RMODPATH}} timeseries object
+#' \code{rmp_read_timeseries} reads a timeseries output file and returns it as a \code{RMODPATH} timeseries object
 #'
 #' @param file path tot the timeseries output file
 #' @param ... ignored

@@ -15,7 +15,7 @@ rmp_read_timeseries(file, ...)
 object of class timeseries
 }
 \description{
-\code{rmp_read_timeseries} reads a timeseries output file and returns it as a \code{\link{RMODPATH}} timeseries object
+\code{rmp_read_timeseries} reads a timeseries output file and returns it as a \code{RMODPATH} timeseries object
 }
 \seealso{
 \code{\link{rmp_read_pathline}}, \code{\link{rmp_read_endpoint}}
