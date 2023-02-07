@@ -178,6 +178,11 @@ rmp_create_bas <- function(dis,
   }
 
   if(!is.null(modflow)) {
+    # first, remove possible output objects
+    output_classes <- RMODFLOW:::rmfi_list_packages('output')
+    output_id <- vapply(modflow, function(i) class(i)[1] %in% output_classes$rmf, TRUE)
+    modflow <- modflow[!output_id]
+
     ftype <- vapply(modflow, function(i) class(i)[which(class(i) == 'rmf_package') - 1], 'text')
     flow_pckg <- which(ftype %in% c('lpf', 'upw', 'bcf', 'huf'))
     if(length(flow_pckg) != 1) stop('Supplied modflow object should have 1 and only 1 flow package', call. = FALSE)
