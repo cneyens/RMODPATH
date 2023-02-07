@@ -207,14 +207,13 @@ rmp_create_bas <- function(dis,
   chck <- is.null(packagelabel) + is.null(defaultifacevalue)
   if(chck == 1) stop('If packagelabel or defaultifacevalue is supplied, both must be supplied', call. = FALSE)
   if(chck == 2) {
+    mpbas$defaultifacecount <- 0
+  } else {
     if(length(packagelabel) != length(defaultifacevalue)) stop('packagelabel and defaultifacevalue should have the same length', call. = FALSE)
     if(any(!(defaultifacevalue %in% c(0:6)))) stop('defaultifacevalues should be in range of 0 to 6', call. = FALSE)
     mpbas$defaultifacecount <- length(packagelabel)
     mpbas$packagelabel <- packagelabel # TODO check for valid value
     mpbas$defaultifacevalue <- defaultifacevalue
-
-  } else {
-    mpbas$defaultifacecount <- 0
   }
 
   # data set 5

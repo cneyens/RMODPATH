@@ -187,9 +187,9 @@ rmp_write_sloc <- function(sloc, file, append = sloc$startinglocationsfileoption
 #' @details For inputstyle = 1, \code{df} should have following columns: (layer, row, column) OR (cellnumber), localx, localy, localz, timeoffset, drape. An optional id column may also be specified.
 #'          \code{\link{rmp_get_locations}} may be used to obtain this data from given x, y and z coordinates.
 #'
-#' @return Object of class sloc
+#' @return Object of class sloc which can be used in \code{\link{rmp_create_particlegroup}} to define a particle group's starting locations.
 #' @export
-#' @seealso \code{\link{rmp_write_sloc}}, \code{\link{rmp_read_sloc}} and \code{\link{rmp_get_locations}}
+#' @seealso \code{\link{rmp_write_sloc}}, \code{\link{rmp_read_sloc}}, \code{\link{rmp_get_locations}}, \code{\link{rmp_create_particlegroup}}, \code{\link{rmp_create_sim}}
 #'
 #' @examples
 rmp_create_sloc <- function(df,
@@ -226,7 +226,7 @@ rmp_create_sloc <- function(df,
 #'
 #' \code{rmp_create_particlegroup} creates a \code{RMODPATH} particle_group object.
 #'
-#' @param sloc \code{RMODPATH} sloc object specyfing the starting locations
+#' @param sloc \code{RMODPATH} sloc object specyfing the starting locations as obtained by \code{\link{rmp_create_sloc}}.
 #' @param name character, particle group name
 #' @param releaseoption integer specifying the release option
 #' @param releasetimes single numeric value when releaseoption = 1 or numeric vector when releaseoption = 3; specifies the releasetimes.
@@ -234,8 +234,9 @@ rmp_create_sloc <- function(df,
 #' @param initialreleasetime numeric; value of tracking time at which first particles are released when releaseoption = 2.
 #' @param interval numeric; uniform time interval between particle releases when releaseoption = 2.
 #'
-#' @return an object of class particle_group
+#' @return an object of class particle_group to be used by \code{\link{rmp_create_sim}}
 #' @export
+#' @seealso \code{\link{rmp_create_sim}}, \code{\link{rmp_create_sloc}}, \code{\link{rmp_get_locations}}
 #'
 #' @examples
 rmp_create_particlegroup <- function(sloc,
@@ -288,7 +289,7 @@ rmp_create_particlegroup <- function(sloc,
 #' @return a tibble with layer, row, column, localx, localy and localz columns when inputstyle = 1 or cellnumber, localx, localy and localz columns when inputstyle = 2,
 #'         corresponding to the given coordinates in obj. When timeoffset and drape (and optionally, id) columns are added, this can be used as the \code{sloc} argument in \code{\link{rmp_create_sloc}} to create a starting locations object.
 #' @export
-#' @seealso \code{\link{rmp_create_sloc}}
+#' @seealso \code{\link{rmp_create_sloc}}, \code{\link{rmp_create_particlegroup}}, \code{\link{rmp_create_sim}}
 #'
 #' @examples
 rmp_get_locations <- function(obj,

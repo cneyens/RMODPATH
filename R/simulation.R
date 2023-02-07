@@ -477,11 +477,11 @@ rmp_write_sim <- function(sim, file, ...) {
 #' @param stopzone integer; specifies the zone value in zones where particles are terminated. Only used when zones is also specified. Only positive values are allowed.
 #' @param zones optional 3d positive integer array of dimensions {dis$nrow x dis$ncol x dis$nlay} specifying the zone numbers for each grid.
 #' @param retardation optional 3d numeric array of dimensions {dis$nrow x dis$ncol x dis$nlay} specifying the retardation factor for each grid cell.
-#' @param particlegroups a single \code{RMODPATH} particle_group object or a list of \code{RMODPATH} particle_group objects specifying the particle groups and corresponding starting locations.
+#' @param particlegroups a single \code{RMODPATH} particle_group object or a list of \code{RMODPATH} particle_group objects specifying the particle groups and corresponding starting locations. See also \code{\link{rmp_create_particlegroup}}.
 #'
 #' @return Object of class sim
 #' @export
-#' @seealso \code{\link{rmp_write_sim}}, \code{\link{rmp_read_sim}}
+#' @seealso \code{\link{rmp_write_sim}}, \code{\link{rmp_read_sim}}, \code{\link{rmp_create_particlegroup}}, \code{\link{rmp_create_sloc}}, \code{\link{rmp_get_locations}}
 #'
 #' @examples
 rmp_create_sim <- function(namefilename,

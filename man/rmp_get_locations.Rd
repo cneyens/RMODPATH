@@ -43,5 +43,5 @@ a tibble with layer, row, column, localx, localy and localz columns when inputst
 When obj is an \code{sf}, \code{sfc} or \code{sfg} object with dimensions XY, an additional z column should be specified. The \code{sf} package should be installed when obj is of class \code{sf}, \code{sfc} or \code{sfg}.
 }
 \seealso{
-\code{\link{rmp_create_sloc}}
+\code{\link{rmp_create_sloc}}, \code{\link{rmp_create_particlegroup}}, \code{\link{rmp_create_sim}}
 }

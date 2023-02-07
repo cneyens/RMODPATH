@@ -99,7 +99,7 @@ rmp_create_sim(
 
 \item{retardation}{optional 3d numeric array of dimensions {dis$nrow x dis$ncol x dis$nlay} specifying the retardation factor for each grid cell.}
 
-\item{particlegroups}{a single \code{RMODPATH} particle_group object or a list of \code{RMODPATH} particle_group objects specifying the particle groups and corresponding starting locations.}
+\item{particlegroups}{a single \code{RMODPATH} particle_group object or a list of \code{RMODPATH} particle_group objects specifying the particle groups and corresponding starting locations. See also \code{\link{rmp_create_particlegroup}}.}
 }
 \value{
 Object of class sim
@@ -108,5 +108,5 @@ Object of class sim
 \code{rmp_create_sim} creates a \code{RMODPATH} sim object.
 }
 \seealso{
-\code{\link{rmp_write_sim}}, \code{\link{rmp_read_sim}}
+\code{\link{rmp_write_sim}}, \code{\link{rmp_read_sim}}, \code{\link{rmp_create_particlegroup}}, \code{\link{rmp_create_sloc}}, \code{\link{rmp_get_locations}}
 }

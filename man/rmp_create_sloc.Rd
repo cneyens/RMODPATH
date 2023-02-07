@@ -16,7 +16,7 @@ rmp_create_sloc(df, inputstyle = 1, ext_file = NULL, ...)
 \item{...}{ignored}
 }
 \value{
-Object of class sloc
+Object of class sloc which can be used in \code{\link{rmp_create_particlegroup}} to define a particle group's starting locations.
 }
 \description{
 \code{rmp_create_sloc} creates a \code{RMODPATH} sloc object.
@@ -26,5 +26,5 @@ For inputstyle = 1, \code{df} should have following columns: (layer, row, column
          \code{\link{rmp_get_locations}} may be used to obtain this data from given x, y and z coordinates.
 }
 \seealso{
-\code{\link{rmp_write_sloc}}, \code{\link{rmp_read_sloc}} and \code{\link{rmp_get_locations}}
+\code{\link{rmp_write_sloc}}, \code{\link{rmp_read_sloc}}, \code{\link{rmp_get_locations}}, \code{\link{rmp_create_particlegroup}}, \code{\link{rmp_create_sim}}
 }

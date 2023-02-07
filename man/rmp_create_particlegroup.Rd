@@ -15,7 +15,7 @@ rmp_create_particlegroup(
 )
 }
 \arguments{
-\item{sloc}{\code{RMODPATH} sloc object specyfing the starting locations}
+\item{sloc}{\code{RMODPATH} sloc object specyfing the starting locations as obtained by \code{\link{rmp_create_sloc}}.}
 
 \item{name}{character, particle group name}
 
@@ -30,8 +30,11 @@ rmp_create_particlegroup(
 \item{interval}{numeric; uniform time interval between particle releases when releaseoption = 2.}
 }
 \value{
-an object of class particle_group
+an object of class particle_group to be used by \code{\link{rmp_create_sim}}
 }
 \description{
 \code{rmp_create_particlegroup} creates a \code{RMODPATH} particle_group object.
+}
+\seealso{
+\code{\link{rmp_create_sim}}, \code{\link{rmp_create_sloc}}, \code{\link{rmp_get_locations}}
 }
